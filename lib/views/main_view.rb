@@ -3,7 +3,7 @@ module Escalonador
 
     def menu
       puts "\n  1 - Criar nova máquina virtual"
-      puts "  2 - Listar Máquinas Ativas"
+      puts "  2 - Conectar em Outro Servidor"
       puts "  3 - Sair"
       print "  ==> "
       gets.chomp

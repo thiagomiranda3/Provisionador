@@ -5,12 +5,8 @@ module Escalonador
       @main_view = MainView.new
       @connection_control = ConnectionControl.new
       @provision = ProvisionControl.new
-      ### Conectando ao XenServer
-      @conn = @connection_control.initiate_connection
 
-      ### Menu de Provisionamento
-      @provision.set_conn(@conn)
-      showmenu
+      make_connection
     end
 
     private
@@ -21,11 +17,22 @@ module Escalonador
         when "1"
           @provision.provisionar
         when "2"
-          puts "Máquinas Ativas no XenServer"
+          @conn = @connection_control.initiate_connection
         when "3"
           exit
         else
           puts "Opção inválida"
+      end
+    end
+
+    def make_connection
+      ### Conectando ao XenServer
+      @conn = @connection_control.initiate_connection
+
+      ### Menu de Provisionamento
+      while (1)
+        @provision.set_conn(@conn)
+        showmenu
       end
     end
 

@@ -1,4 +1,5 @@
 require 'fog'
+include Math
 
 module Escalonador
   autoload :ConnectionControl, './controllers/connection_control'
